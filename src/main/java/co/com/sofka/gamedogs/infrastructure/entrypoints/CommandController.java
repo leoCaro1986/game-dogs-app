@@ -1,8 +1,8 @@
 package co.com.sofka.gamedogs.infrastructure.entrypoints;
 
 
-import co.com.sofka.gamedogs.domain.line.command.AddLineCommand;
-import co.com.sofka.gamedogs.domain.line.events.LineFinished;
+import co.com.sofka.gamedogs.domain.canodrome.command.AddCanodromeCommand;
+import co.com.sofka.gamedogs.domain.canodrome.events.CanodromeFinished;
 import co.com.sofka.gamedogs.domain.game.commands.AddPlayerCommand;
 import co.com.sofka.gamedogs.domain.game.commands.CreateGameCommand;
 import co.com.sofka.gamedogs.domain.game.commands.FinishGameCommand;
@@ -62,8 +62,8 @@ public class CommandController {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/addLine")
-    public Response executor(AddLineCommand command) {
+    @Path("/addCanodrome")
+    public Response executor(AddCanodromeCommand command) {
         System.out.println("controller " + command.getGameId());
         messageService.send(command);
         return Response.ok().build();
@@ -72,7 +72,7 @@ public class CommandController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/testevent")
-    public Response executor(LineFinished event) {
+    public Response executor(CanodromeFinished event) {
         System.out.println("controller " + event.getGameId());
         messageService.send(event);
         return Response.ok().build();

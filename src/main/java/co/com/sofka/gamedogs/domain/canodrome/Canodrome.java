@@ -1,41 +1,43 @@
-package co.com.sofka.gamedogs.domain.line;
+package co.com.sofka.gamedogs.domain.canodrome;
 
 import co.com.sofka.gamedogs.domain.generic.AggregateRoot;
 import co.com.sofka.gamedogs.domain.generic.DomainEvent;
 import co.com.sofka.gamedogs.domain.generic.EventChange;
-import co.com.sofka.gamedogs.domain.line.events.CreatedLine;
+import co.com.sofka.gamedogs.domain.canodrome.events.CreatedCanodrome;
 
 import java.util.List;
 
-public class Line extends AggregateRoot implements EventChange {
+public class Canodrome extends AggregateRoot implements EventChange {
 
     private String dogId;
     private String gameId;
     private Integer positionCurrent;
     private Integer goal;
     private Boolean finaldisplacement;
+    private String nameCanodrome;
 
-    public Line(String id, String gameId, Integer goal) {
+    public Canodrome(String id, String gameId, Integer goal, String nameCanodrome) {
         super(id);
-        appendChange(new CreatedLine(goal, gameId)).apply();
+        appendChange(new CreatedCanodrome(goal, gameId, nameCanodrome)).apply();
     }
 
-    private Line(String entityId) {
+    private Canodrome(String entityId) {
         super(entityId);
         subscribe(this);
 
-        listener((CreatedLine event) -> {
+        listener((CreatedCanodrome event) -> {
             this.goal = event.getGoal();
             this.gameId = event.getGameId();
             this.finaldisplacement = false;
             this.positionCurrent = 0;
+
         });
     }
 
-    public static Line from(String entityId, List<DomainEvent> eventList) {
-        var line = new Line(entityId);
-        eventList.forEach(line::applyEvent);
-        return line;
+    public static Canodrome from(String entityId, List<DomainEvent> eventList) {
+        var canodrome = new Canodrome(entityId);
+        eventList.forEach(canodrome::applyEvent);
+        return canodrome;
     }
 
 
@@ -58,5 +60,9 @@ public class Line extends AggregateRoot implements EventChange {
 
     public Boolean getFinaldisplacement() {
         return finaldisplacement;
+    }
+
+    public String getNameCanodrome() {
+        return nameCanodrome;
     }
 }

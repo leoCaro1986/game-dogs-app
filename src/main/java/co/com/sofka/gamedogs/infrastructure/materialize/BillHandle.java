@@ -4,7 +4,7 @@ import co.com.sofka.gamedogs.domain.game.events.CreatedGame;
 import co.com.sofka.gamedogs.domain.game.events.FinishedGame;
 import co.com.sofka.gamedogs.domain.game.events.StartedGame;
 import co.com.sofka.gamedogs.domain.game.events.AddedPlayer;
-import co.com.sofka.gamedogs.domain.line.events.CreatedLine;
+import co.com.sofka.gamedogs.domain.canodrome.events.CreatedCanodrome;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.model.Filters;
@@ -74,14 +74,14 @@ public class BillHandle {
                 .updateOne( Filters.eq("_id", event.getAggregateId()), updateObject);
     }
 
-    @ConsumeEvent(value = "sofkau.line.createdline")
-    void consumeCarrilCreado(CreatedLine event) {
-        System.out.println("materialize carril");
+    @ConsumeEvent(value = "sofkau.canodrome.createdcanodrome")
+    void consumeCanodromeCreated(CreatedCanodrome event) {
+        System.out.println("materialize canodrome");
         Map<String, Object> document = new HashMap<>();
         document.put("_id", event.getAggregateId());
         document.put("goal", event.getGoal());
         document.put("gameId", event.getGameId());
-        mongoClient.getDatabase("queries").getCollection("line")
+        mongoClient.getDatabase("queries").getCollection("canodrome")
                 .insertOne(new Document(document));
     }
 

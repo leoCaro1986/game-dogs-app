@@ -5,13 +5,13 @@ import co.com.sofka.gamedogs.domain.generic.DomainEvent;
 public class ChangedDistance extends DomainEvent {
 
     private Integer advance;
-    private String lineId;
+    private String canodromeId;
     private String gameId;
 
-    public ChangedDistance(Integer advance, String lineId, String gameId) {
+    public ChangedDistance(Integer advance, String canodromeId, String gameId) {
         super("sofkau.dog.changeddistance");
         this.advance = advance;
-        this.lineId = lineId;
+        this.canodromeId = canodromeId;
         this.gameId = gameId;
     }
 
@@ -19,8 +19,8 @@ public class ChangedDistance extends DomainEvent {
         return advance;
     }
 
-    public String getLineId() {
-        return lineId;
+    public String getCanodromeId() {
+        return canodromeId;
     }
 
     public String getGameId() {

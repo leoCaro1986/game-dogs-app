@@ -28,12 +28,12 @@ public abstract class UseCaseHandle {
         events.forEach(messageService::send);
     }
 
-    public void saveCarril(String id, List<DomainEvent> events) {
-        System.out.println("saveLine");
+    public void saveCanodrome(String id, List<DomainEvent> events) {
+        System.out.println("saveCanodrome");
         events.stream().map(event -> {
             String eventBody = EventSerializer.instance().serialize(event);
             return new StoredEvent(event.getClass().getTypeName(), new Date(), eventBody);
-        }).forEach(storedEvent -> repository.saveEvent("line", id, storedEvent));
+        }).forEach(storedEvent -> repository.saveEvent("canodrome", id, storedEvent));
         events.forEach(messageService::send);
     }
 }

@@ -55,9 +55,9 @@ public class Dog extends AggregateRoot implements EventChange {
         appendChange(new AddedPlayer(nickName, document)).apply();
     }
 
-    public void advanceInLine(String lineId){
+    public void advanceInLine(String canodromeId){
         var dice = this.throwDice() * 100;
-        appendChange(new ChangedDistance(dice, lineId, gameId)).apply();
+        appendChange(new ChangedDistance(dice, canodromeId, gameId)).apply();
     }
 
     public Integer throwDice(){

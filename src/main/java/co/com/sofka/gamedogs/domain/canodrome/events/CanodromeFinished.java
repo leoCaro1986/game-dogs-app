@@ -1,15 +1,15 @@
-package co.com.sofka.gamedogs.domain.line.events;
+package co.com.sofka.gamedogs.domain.canodrome.events;
 
 import co.com.sofka.domain.generic.Incremental;
 import co.com.sofka.gamedogs.domain.generic.DomainEvent;
 
-public class LineFinished extends DomainEvent implements Incremental {
+public class CanodromeFinished extends DomainEvent implements Incremental {
 
     private String playerId;
     private String gameId;
 
-    public LineFinished(String playerId, String gameId) {
-        super("sofkau.line.linefinished");
+    public CanodromeFinished(String playerId, String gameId) {
+        super("sofkau.line.canodromefinished");
         this.playerId = playerId;
         this.gameId = gameId;
     }
