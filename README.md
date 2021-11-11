@@ -1,8 +1,8 @@
-# cargame Project
+# game-dogs Project
 
 ### Diagrams
 
-[Enlace a los diagramas](https://drive.google.com/file/d/1ToPyoDLw8O3fAtEsClxpBje2lSw9z9bL/view?usp=sharing)
+
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
