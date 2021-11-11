@@ -11,7 +11,7 @@ public class StartedGame extends DomainEvent {
     private Boolean state;
 
     public StartedGame() {
-        super("sofkau.game.startedgame");
+        super("sofkau.game.addedplayer");
         this.date = LocalDateTime.now();
         this.state = true;
     }

@@ -1,6 +1,6 @@
 # game-dogs Project
 
-### Diagrams
+
 
 
 

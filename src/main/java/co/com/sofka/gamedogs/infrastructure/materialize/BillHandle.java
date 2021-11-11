@@ -24,7 +24,7 @@ public class BillHandle {
     }
 
 
-    @ConsumeEvent(value = "sofkau.game.createdgame")
+    @ConsumeEvent(value = "sofkau.game.createdGame")
     void consumeJuegoCreado(CreatedGame event) {
         System.out.println("materialize bill");
         Map<String, Object> document = new HashMap<>();
@@ -47,11 +47,11 @@ public class BillHandle {
 
         BasicDBObject updateObject = new BasicDBObject();
         updateObject.put("$set", document);
-        mongoClient.getDatabase("queries").getCollection("juego")
+        mongoClient.getDatabase("queries").getCollection("game")
                 .updateOne( Filters.eq("_id", event.getAggregateId()), updateObject);
     }
 
-    @ConsumeEvent(value = "sofkau.game.startedgame")
+    @ConsumeEvent(value = "sofkau.game.addedplayer")
     void consumeJuegoIniciado(StartedGame event) {
         System.out.println("materialize product");
         BasicDBObject document = new BasicDBObject();
@@ -74,7 +74,7 @@ public class BillHandle {
                 .updateOne( Filters.eq("_id", event.getAggregateId()), updateObject);
     }
 
-    @ConsumeEvent(value = "sofkau.line.createline")
+    @ConsumeEvent(value = "sofkau.line.createdline")
     void consumeCarrilCreado(CreatedLine event) {
         System.out.println("materialize carril");
         Map<String, Object> document = new HashMap<>();
