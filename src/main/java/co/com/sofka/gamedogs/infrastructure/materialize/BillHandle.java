@@ -51,7 +51,7 @@ public class BillHandle {
                 .updateOne( Filters.eq("_id", event.getAggregateId()), updateObject);
     }
 
-    @ConsumeEvent(value = "sofkau.game.addedplayer")
+    @ConsumeEvent(value = "sofkau.game.startedGame")
     void consumeJuegoIniciado(StartedGame event) {
         System.out.println("materialize product");
         BasicDBObject document = new BasicDBObject();

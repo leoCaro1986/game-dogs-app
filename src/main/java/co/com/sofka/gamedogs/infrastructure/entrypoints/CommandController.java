@@ -46,7 +46,7 @@ public class CommandController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/startGame")
     public Response executor(StartGameCommand command) {
-        System.out.println("controller " + command.getGameId());
+        System.out.println("controller" + command.getGameId());
         messageService.send(command);
         return Response.ok().build();
     }

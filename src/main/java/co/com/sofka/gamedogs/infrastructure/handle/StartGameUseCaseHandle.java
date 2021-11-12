@@ -16,7 +16,7 @@ public class StartGameUseCaseHandle extends UseCaseHandle {
         this.startGameUseCase = startGameUseCase;
     }
 
-    @ConsumeEvent(value = "sofkau.game.initGame")
+    @ConsumeEvent(value = "sofkau.game.startGame")
     void consume(StartGameCommand command){
         System.out.println(command.getGameId());
         var events = startGameUseCase.apply(command);
